@@ -1,0 +1,22 @@
+{
+  "id": "regularization",
+  "title": "Regularization",
+  "subtopics": [
+    {
+      "id": "l1-regularization",
+      "title": "L1 Regularization",
+      "definition": "Penalty term",
+      "explanation": "Encourages sparsity.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "l2-regularization",
+      "title": "L2 Regularization",
+      "definition": "Weight decay",
+      "explanation": "Reduces large weights.",
+      "links": [],
+      "videos": []
+    }
+  ]
+}

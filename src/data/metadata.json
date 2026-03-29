@@ -1,0 +1,25 @@
+{
+  "siteName": "EasyLearn",
+  "slogan": "Learning Helps you Grow",
+  "contact": {
+    "whatsappLink": "https://wa.me/917984604116"
+  },
+  "footerLinks": [
+    {
+      "title": "Hot Topics",
+      "links": [
+        { "label": "Generative AI", "href": "/courses/generative-ai" },
+        { "label": "Machine Learning", "href": "/courses/machine-learning" },
+        { "label": "Deep Learning", "href": "/courses/deep-learning" },
+        { "label": "Data Science", "href": "/courses/data-science" }
+      ]
+    },
+    {
+      "title": "Sitemap",
+      "links": [
+        { "label": "Home", "href": "/" },
+        { "label": "About Us", "href": "/about" }
+      ]
+    }
+  ]
+}

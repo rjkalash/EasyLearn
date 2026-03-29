@@ -1,0 +1,30 @@
+{
+  "id": "feature-engineering",
+  "title": "Feature Engineering",
+  "subtopics": [
+    {
+      "id": "feature-scaling",
+      "title": "Feature Scaling",
+      "definition": "Normalize data",
+      "explanation": "Ensures equal importance of features.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "encoding-techniques",
+      "title": "Encoding Techniques",
+      "definition": "Convert categorical data",
+      "explanation": "Includes one-hot and label encoding.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "feature-selection",
+      "title": "Feature Selection",
+      "definition": "Select useful features",
+      "explanation": "Removes irrelevant features.",
+      "links": [],
+      "videos": []
+    }
+  ]
+}

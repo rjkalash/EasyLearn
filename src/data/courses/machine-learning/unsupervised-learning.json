@@ -1,0 +1,38 @@
+{
+  "id": "unsupervised-learning",
+  "title": "Unsupervised Learning",
+  "subtopics": [
+    {
+      "id": "k-means-clustering",
+      "title": "K-Means Clustering",
+      "definition": "Partition clustering",
+      "explanation": "Divides data into k clusters based on centroids.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "hierarchical-clustering",
+      "title": "Hierarchical Clustering",
+      "definition": "Tree clustering",
+      "explanation": "Builds nested clusters using dendrogram.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "dbscan",
+      "title": "DBSCAN",
+      "definition": "Density-based clustering",
+      "explanation": "Groups points based on density.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "pca",
+      "title": "PCA",
+      "definition": "Dimensionality reduction",
+      "explanation": "Projects data into lower dimensions.",
+      "links": [],
+      "videos": []
+    }
+  ]
+}

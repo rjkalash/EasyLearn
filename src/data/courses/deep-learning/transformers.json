@@ -1,0 +1,38 @@
+{
+  "id": "transformers",
+  "title": "Transformers",
+  "subtopics": [
+    {
+      "id": "attention-mechanism",
+      "title": "Attention Mechanism",
+      "definition": "Focus mechanism",
+      "explanation": "Assigns importance to input tokens.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "self-attention",
+      "title": "Self Attention",
+      "definition": "Internal attention",
+      "explanation": "Relates tokens within sequence.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "multi-head-attention",
+      "title": "Multi-head Attention",
+      "definition": "Parallel attention",
+      "explanation": "Captures multiple relationships.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "positional-encoding",
+      "title": "Positional Encoding",
+      "definition": "Sequence order",
+      "explanation": "Adds positional info to tokens.",
+      "links": [],
+      "videos": []
+    }
+  ]
+}

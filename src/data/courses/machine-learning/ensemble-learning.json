@@ -1,0 +1,30 @@
+{
+  "id": "ensemble-learning",
+  "title": "Ensemble Learning",
+  "subtopics": [
+    {
+      "id": "bagging",
+      "title": "Bagging",
+      "definition": "Bootstrap aggregation",
+      "explanation": "Reduces variance.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "boosting",
+      "title": "Boosting",
+      "definition": "Sequential learning",
+      "explanation": "Focuses on errors.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "stacking",
+      "title": "Stacking",
+      "definition": "Model combination",
+      "explanation": "Combines predictions of multiple models.",
+      "links": [],
+      "videos": []
+    }
+  ]
+}

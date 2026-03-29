@@ -1,0 +1,38 @@
+{
+  "id": "recurrent-neural-networks",
+  "title": "Recurrent Neural Networks",
+  "subtopics": [
+    {
+      "id": "rnn",
+      "title": "RNN",
+      "definition": "Sequential model",
+      "explanation": "Processes sequential data using hidden states.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "vanishing-gradient",
+      "title": "Vanishing Gradient",
+      "definition": "Gradient issue",
+      "explanation": "Gradients shrink during backpropagation.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "lstm",
+      "title": "LSTM",
+      "definition": "Advanced RNN",
+      "explanation": "Handles long-term dependencies.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "gru",
+      "title": "GRU",
+      "definition": "Simplified LSTM",
+      "explanation": "Faster and efficient variant.",
+      "links": [],
+      "videos": []
+    }
+  ]
+}

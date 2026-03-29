@@ -1,0 +1,22 @@
+{
+  "id": "nlp-basics",
+  "title": "NLP Basics",
+  "subtopics": [
+    {
+      "id": "tokenization",
+      "title": "Tokenization",
+      "definition": "Text splitting",
+      "explanation": "Breaks text into tokens.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "tf-idf",
+      "title": "TF-IDF",
+      "definition": "Text importance",
+      "explanation": "Weights words based on importance.",
+      "links": [],
+      "videos": []
+    }
+  ]
+}

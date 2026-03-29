@@ -1,0 +1,54 @@
+{
+  "id": "data-cleaning",
+  "title": "Data Cleaning",
+  "subtopics": [
+    {
+      "id": "missing-values",
+      "title": "Missing Values",
+      "definition": "Incomplete data",
+      "explanation": "Missing values are gaps in data that can skew analysis. They're handled by imputation (filling with mean/median/mode) or deletion (removing rows/columns). Proper handling preserves data integrity.",
+      "example": "If age is missing for some customers, you could fill with median age or drop rows if the missing percentage is small.",
+      "code": "import pandas as pd\ndf = pd.DataFrame({'age': [25, None, 30, 35, None]})\n# Impute with median\ndf['age'].fillna(df['age'].median(), inplace=True)\nprint(df)"
+    },
+    {
+      "id": "outliers",
+      "title": "Outliers",
+      "definition": "Extreme values",
+      "explanation": "Outliers are extreme values that can distort statistical analysis. Detected via IQR (interquartile range) or Z-score methods. They may be removed, capped, or analyzed separately.",
+      "example": "In salary data, a value of $1,000,000 might be an outlier compared to most salaries around $50,000-$80,000.",
+      "code": "import pandas as pd\n# IQR method\nQ1 = df['salary'].quantile(0.25)\nQ3 = df['salary'].quantile(0.75)\nIQR = Q3 - Q1\noutliers = df[(df['salary'] < Q1 - 1.5*IQR) | (df['salary'] > Q3 + 1.5*IQR)]"
+    },
+    {
+      "id": "normalization",
+      "title": "Normalization",
+      "definition": "Scaling",
+      "explanation": "Normalization scales features to a fixed range, typically [0, 1]. It's crucial for algorithms sensitive to feature magnitudes, like neural networks and k-means clustering.",
+      "example": "Scaling ages from [20, 60] to [0, 1] where 20 becomes 0 and 60 becomes 1.",
+      "code": "from sklearn.preprocessing import MinMaxScaler\nscaler = MinMaxScaler()\ndata = [[20], [40], [60]]\nnormalized = scaler.fit_transform(data)\nprint(normalized)  # Output: [[0.], [0.5], [1.]]"
+    },
+    {
+      "id": "standardization",
+      "title": "Standardization",
+      "definition": "Z-score scaling",
+      "explanation": "Standardization transforms data to have mean 0 and standard deviation 1. It's less affected by outliers than normalization and is preferred for algorithms like SVM and linear regression.",
+      "example": "Transforming heights [150, 160, 170] cm to have mean 0 and std 1.",
+      "code": "from sklearn.preprocessing import StandardScaler\nscaler = StandardScaler()\ndata = [[150], [160], [170]]\nstandardized = scaler.fit_transform(data)\nprint(standardized)  # Output: [[-1.22], [0.], [1.22]]"
+    },
+    {
+      "id": "duplicate-removal",
+      "title": "Duplicate Removal",
+      "definition": "Remove repeated rows",
+      "explanation": "Duplicate rows can bias analysis and inflate model performance. Identifying and removing duplicates ensures each observation is unique and representative.",
+      "example": "In a customer database, the same customer might appear twice due to data entry errors. Removing duplicates ensures accurate counts.",
+      "code": "import pandas as pd\ndf = pd.DataFrame({'id': [1, 2, 2, 3], 'name': ['A', 'B', 'B', 'C']})\ndf.drop_duplicates(inplace=True)\nprint(df)  # Duplicate id=2 removed"
+    },
+    {
+      "id": "data-type-conversion",
+      "title": "Data Type Conversion",
+      "definition": "Type correction",
+      "explanation": "Ensuring each column has the correct data type (int, float, category, datetime) is essential for memory efficiency and proper analysis. Incorrect types can break calculations or visualizations.",
+      "example": "Converting a 'date' column from string to datetime enables time-based filtering and trend analysis.",
+      "code": "import pandas as pd\ndf = pd.DataFrame({'date': ['2023-01-01', '2023-01-02']})\ndf['date'] = pd.to_datetime(df['date'])\nprint(df.dtypes)  # Output: date datetime64[ns]"
+    }
+  ]
+}

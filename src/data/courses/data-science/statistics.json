@@ -1,0 +1,126 @@
+{
+  "id": "statistics",
+  "title": "Statistics",
+  "subtopics": [
+    {
+      "id": "mean",
+      "title": "Mean",
+      "definition": "Average of values",
+      "explanation": "The sum of all values divided by the count. It represents the central point of a dataset. However, it's sensitive to extreme values (outliers).",
+      "example": "For house prices [$100k, $120k, $130k, $1M], the mean is ($100k+$120k+$130k+$1M)/4 = $337.5k, which doesn't represent typical home value well due to the outlier.",
+      "code": "import numpy as np\ndata = [100000, 120000, 130000, 1000000]\nmean = np.mean(data)\nprint(f\"Mean: ${mean:,.0f}\")"
+    },
+    {
+      "id": "median",
+      "title": "Median",
+      "definition": "Middle value",
+      "explanation": "The middle value when data is sorted. For even counts, it's the average of the two middle numbers. Robust to outliers, making it better for skewed distributions.",
+      "example": "For the same house prices [$100k, $120k, $130k, $1M], sorted order gives middle two values $120k and $130k. Median = ($120k + $130k)/2 = $125k, representing typical home value more accurately.",
+      "code": "import numpy as np\ndata = [100000, 120000, 130000, 1000000]\nmedian = np.median(data)\nprint(f\"Median: ${median:,.0f}\")"
+    },
+    {
+      "id": "mode",
+      "title": "Mode",
+      "definition": "Most frequent value",
+      "explanation": "The value that appears most frequently. Essential for categorical data analysis and understanding common occurrences.",
+      "example": "In a survey of favorite colors: [Red, Blue, Red, Green, Red], the mode is Red, indicating it's the most popular choice.",
+      "code": "from statistics import mode\ncolors = ['Red', 'Blue', 'Red', 'Green', 'Red']\nmode_color = mode(colors)\nprint(f\"Mode: {mode_color}\")"
+    },
+    {
+      "id": "variance",
+      "title": "Variance",
+      "definition": "Spread measure",
+      "explanation": "Average of squared deviations from the mean. Quantifies data spread but in squared units, making interpretation less intuitive.",
+      "example": "Two datasets: A = [10, 10, 10, 10] has variance 0 (no spread). B = [5, 10, 15, 20] has higher variance, indicating more dispersion.",
+      "code": "import numpy as np\ndata_b = [5, 10, 15, 20]\nvariance = np.var(data_b, ddof=0)  # ddof=0 for population variance\nprint(f\"Variance: {variance:.2f}\")"
+    },
+    {
+      "id": "mean-1",
+      "title": "Mean",
+      "definition": "Average of values",
+      "explanation": "The mean is the sum of all values divided by the count of values. It represents the central tendency of a dataset. However, it is sensitive to outliers, which can pull the mean away from the typical value.",
+      "example": "For data [10, 20, 30, 40, 1000], the mean is (10+20+30+40+1000)/5 = 220, which is not representative of most values.",
+      "code": "import numpy as np\ndata = [10, 20, 30, 40, 1000]\nmean_value = np.mean(data)\nprint(f\"Mean: {mean_value}\")  # Output: Mean: 220.0"
+    },
+    {
+      "id": "skewness",
+      "title": "Skewness",
+      "definition": "Asymmetry measure",
+      "explanation": "Skewness measures the asymmetry of a distribution. Positive skew (right tail) means most data is on the left, while negative skew (left tail) means most data is on the right. It helps understand data shape.",
+      "example": "Income data is often positively skewed \u2014 most people earn modestly, while a few earn very high incomes.",
+      "code": "from scipy.stats import skew\ndata = [10, 20, 30, 40, 1000]\nskewness = skew(data)\nprint(f\"Skewness: {skewness:.2f}\")  # Output: Skewness: 1.63 (positive skew)"
+    },
+    {
+      "id": "kurtosis",
+      "title": "Kurtosis",
+      "definition": "Tail heaviness",
+      "explanation": "Kurtosis measures the 'tailedness' of a distribution. High kurtosis indicates heavy tails and more outliers (risk of extreme events), while low kurtosis indicates lighter tails.",
+      "example": "Financial returns often have high kurtosis \u2014 extreme gains or losses occur more frequently than a normal distribution would predict.",
+      "code": "from scipy.stats import kurtosis\ndata = [10, 20, 30, 40, 1000]\nkurt = kurtosis(data)\nprint(f\"Kurtosis: {kurt:.2f}\")  # Output: Kurtosis: 3.61 (high kurtosis)"
+    },
+    {
+      "id": "correlation",
+      "title": "Correlation",
+      "definition": "Linear relationship",
+      "explanation": "Correlation measures the strength and direction of a linear relationship between two variables, ranging from -1 (perfect negative) to +1 (perfect positive). It helps identify relationships.",
+      "example": "Height and weight typically have a positive correlation (~0.7), meaning taller people tend to weigh more.",
+      "code": "import numpy as np\nx = [1, 2, 3, 4, 5]\ny = [2, 4, 6, 8, 10]\ncorrelation = np.corrcoef(x, y)[0, 1]\nprint(f\"Correlation: {correlation}\")  # Output: Correlation: 1.0"
+    },
+    {
+      "id": "covariance",
+      "title": "Covariance",
+      "definition": "Joint variability",
+      "explanation": "Covariance indicates how two variables change together. Positive covariance means they increase together; negative means one increases as the other decreases. Unlike correlation, its magnitude is not standardized.",
+      "example": "If hours studied and exam scores have positive covariance, more study time is associated with higher scores.",
+      "code": "import numpy as np\nx = [1, 2, 3, 4, 5]\ny = [2, 4, 6, 8, 10]\ncovariance = np.cov(x, y, ddof=0)[0, 1]\nprint(f\"Covariance: {covariance}\")  # Output: Covariance: 4.0"
+    },
+    {
+      "id": "z-score",
+      "title": "Z-score",
+      "definition": "Standardized value",
+      "explanation": "Z-score tells how many standard deviations a data point is from the mean. It's used for outlier detection and comparing values from different distributions.",
+      "example": "A Z-score of 2.5 means the value is 2.5 standard deviations above the mean, which is unusual (beyond typical range).",
+      "code": "from scipy.stats import zscore\ndata = [10, 20, 30, 40, 100]\nz_scores = zscore(data)\nprint(f\"Z-scores: {z_scores}\")  # Output: [-0.98, -0.66, -0.33, 0.0, 1.98]"
+    },
+    {
+      "id": "normal-distribution",
+      "title": "Normal Distribution",
+      "definition": "Bell-shaped curve",
+      "explanation": "A continuous, symmetric, bell-shaped distribution where most data clusters around the mean. Many natural phenomena (heights, test scores) follow this distribution, making it fundamental to statistics.",
+      "example": "IQ scores follow a normal distribution with mean 100 and standard deviation 15. About 68% of people score between 85 and 115.",
+      "code": "import numpy as np\nimport matplotlib.pyplot as plt\n# Generate normal distribution\nmean, std = 0, 1\ndata = np.random.normal(mean, std, 1000)\nplt.hist(data, bins=30, density=True)\nplt.title('Normal Distribution')\nplt.show()"
+    },
+    {
+      "id": "central-limit-theorem",
+      "title": "Central Limit Theorem",
+      "definition": "Sampling distribution theory",
+      "explanation": "The CLT states that the distribution of sample means approaches a normal distribution as sample size increases, regardless of the population's distribution. This underpins hypothesis testing and confidence intervals.",
+      "example": "Even if a population is highly skewed (e.g., income), the distribution of means from many samples will be approximately normal.",
+      "code": "import numpy as np\nimport matplotlib.pyplot as plt\n# Population: exponential distribution\npopulation = np.random.exponential(scale=1, size=100000)\nsample_means = [np.mean(np.random.choice(population, 30)) for _ in range(1000)]\nplt.hist(sample_means, bins=30)\nplt.title('Distribution of Sample Means (CLT)')\nplt.show()"
+    },
+    {
+      "id": "confidence-interval",
+      "title": "Confidence Interval",
+      "definition": "Range estimate",
+      "explanation": "A confidence interval provides a range of values likely to contain the true population parameter (e.g., mean) with a specified confidence level (e.g., 95%). It quantifies estimation uncertainty.",
+      "example": "A 95% confidence interval for average height is [65, 67] inches, meaning we are 95% confident the true population mean lies within this range.",
+      "code": "import numpy as np\nfrom scipy import stats\ndata = [65, 66, 67, 68, 69, 70]\nmean = np.mean(data)\nstd_err = stats.sem(data)\nci = stats.t.interval(0.95, len(data)-1, mean, std_err)\nprint(f\"95% CI: {ci}\")"
+    },
+    {
+      "id": "hypothesis-testing",
+      "title": "Hypothesis Testing",
+      "definition": "Statistical testing",
+      "explanation": "A formal procedure to test a claim about a population using sample data. It helps determine if observed effects are statistically significant or due to random chance.",
+      "example": "Testing whether a new drug has a different effect than a placebo. Null hypothesis: no difference. If p-value < 0.05, we reject the null and conclude the drug has an effect.",
+      "code": "from scipy import stats\n# One-sample t-test\ndata = [25, 27, 29, 30, 31]\nt_stat, p_value = stats.ttest_1samp(data, 28)\nprint(f\"P-value: {p_value:.4f}\")  # If p < 0.05, reject null"
+    },
+    {
+      "id": "p-value",
+      "title": "P-value",
+      "definition": "Probability score",
+      "explanation": "The p-value is the probability of observing data as extreme as the sample, assuming the null hypothesis is true. A small p-value (typically < 0.05) suggests strong evidence against the null hypothesis.",
+      "example": "A p-value of 0.03 means there's only a 3% chance of seeing such extreme results if the null hypothesis were true, so we reject the null.",
+      "code": "from scipy import stats\n# Example: Testing if mean differs from 0\ndata = [0.5, 0.6, 0.7, 0.8, 0.9]\nt_stat, p_value = stats.ttest_1samp(data, 0)\nprint(f\"P-value: {p_value:.4f}\")  # Output: P-value: 0.0002"
+    }
+  ]
+}

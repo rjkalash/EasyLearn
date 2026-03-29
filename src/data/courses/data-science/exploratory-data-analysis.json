@@ -1,0 +1,38 @@
+{
+  "id": "exploratory-data-analysis",
+  "title": "Exploratory Data Analysis",
+  "subtopics": [
+    {
+      "id": "univariate-analysis",
+      "title": "Univariate Analysis",
+      "definition": "Single variable study",
+      "explanation": "Analyzing one variable at a time using summary statistics (mean, median) and visualizations (histograms, boxplots). It helps understand distribution, central tendency, and spread.",
+      "example": "Using a histogram to visualize the distribution of customer ages reveals if the data is skewed or has multiple peaks.",
+      "code": "import matplotlib.pyplot as plt\nimport seaborn as sns\nsns.histplot(df['age'], bins=20, kde=True)\nplt.title('Distribution of Age')\nplt.show()"
+    },
+    {
+      "id": "bivariate-analysis",
+      "title": "Bivariate Analysis",
+      "definition": "Two-variable study",
+      "explanation": "Exploring relationships between two variables using scatter plots, correlation coefficients, and cross-tabulations. It reveals patterns, correlations, and potential causal relationships.",
+      "example": "A scatter plot of hours studied vs. exam scores can show if more study time is associated with higher scores.",
+      "code": "sns.scatterplot(x='hours_studied', y='exam_score', data=df)\nplt.title('Study Hours vs Exam Score')\nplt.show()"
+    },
+    {
+      "id": "multivariate-analysis",
+      "title": "Multivariate Analysis",
+      "definition": "Multiple variables",
+      "explanation": "Analyzing three or more variables simultaneously using techniques like pair plots, heatmaps, and PCA. It uncovers complex interactions and patterns not visible in univariate or bivariate analysis.",
+      "example": "A correlation heatmap shows relationships among multiple features, helping identify multicollinearity or key predictors.",
+      "code": "sns.heatmap(df.corr(), annot=True, cmap='coolwarm')\nplt.title('Correlation Matrix')\nplt.show()"
+    },
+    {
+      "id": "data-visualization",
+      "title": "Data Visualization",
+      "definition": "Graphical representation",
+      "explanation": "Using charts and graphs to communicate insights effectively. Good visualizations make complex data understandable and help identify patterns, outliers, and trends.",
+      "example": "A line chart showing sales over time reveals seasonality and growth trends at a glance.",
+      "code": "plt.plot(df['date'], df['sales'])\nplt.xlabel('Date')\nplt.ylabel('Sales')\nplt.title('Sales Trend')\nplt.xticks(rotation=45)\nplt.show()"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "sql-for-data-science",
+  "title": "SQL for Data Science",
+  "subtopics": [
+    {
+      "id": "select",
+      "title": "SELECT",
+      "definition": "Retrieve data",
+      "explanation": "The SELECT statement is the fundamental SQL command for querying data from a database. It specifies which columns to retrieve and can include filtering, sorting, and aggregation.",
+      "example": "Retrieve customer names and emails from the customers table.",
+      "code": "SELECT name, email FROM customers WHERE country = 'USA' ORDER BY name;"
+    },
+    {
+      "id": "join",
+      "title": "JOIN",
+      "definition": "Combine tables",
+      "explanation": "JOIN combines rows from two or more tables based on a related column. Inner JOIN returns only matching rows, while LEFT JOIN returns all rows from the left table with matches from the right.",
+      "example": "Combine orders with customer information to see who placed each order.",
+      "code": "SELECT orders.id, customers.name FROM orders INNER JOIN customers ON orders.customer_id = customers.id;"
+    },
+    {
+      "id": "group-by",
+      "title": "GROUP BY",
+      "definition": "Aggregation",
+      "explanation": "GROUP BY groups rows that have the same values in specified columns, allowing aggregate functions (COUNT, SUM, AVG) to be applied to each group. Essential for summary reports.",
+      "example": "Calculate total sales per product category.",
+      "code": "SELECT category, SUM(sales) AS total_sales FROM products GROUP BY category ORDER BY total_sales DESC;"
+    }
+  ]
+}

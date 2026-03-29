@@ -1,0 +1,30 @@
+{
+  "id": "feature-engineering",
+  "title": "Feature Engineering",
+  "subtopics": [
+    {
+      "id": "feature-scaling",
+      "title": "Feature Scaling",
+      "definition": "Normalize features",
+      "explanation": "Scaling features to a similar range ensures that no single feature dominates due to its magnitude. Essential for distance-based algorithms (kNN, SVM) and gradient descent optimization.",
+      "example": "Without scaling, a feature ranging 0-1000 (e.g., income) would dominate a feature ranging 0-10 (e.g., years of experience) in distance calculations.",
+      "code": "from sklearn.preprocessing import StandardScaler\nfeatures = df[['income', 'age', 'experience']]\nscaler = StandardScaler()\nscaled_features = scaler.fit_transform(features)"
+    },
+    {
+      "id": "encoding",
+      "title": "Encoding",
+      "definition": "Categorical conversion",
+      "explanation": "Converting categorical text data into numerical format for machine learning models. One-hot encoding creates binary columns for each category, while label encoding assigns integer labels.",
+      "example": "One-hot encoding 'color': red, blue, green becomes three columns: is_red, is_blue, is_green.",
+      "code": "df = pd.get_dummies(df, columns=['color'], prefix=['color'])\nprint(df.head())"
+    },
+    {
+      "id": "feature-selection",
+      "title": "Feature Selection",
+      "definition": "Select important features",
+      "explanation": "Identifying and retaining only the most relevant features to reduce dimensionality, improve model performance, and reduce overfitting. Methods include correlation analysis, recursive feature elimination, and feature importance from tree models.",
+      "example": "In a house price model, features like 'location' and 'sqft' are kept, while 'street_name' might be irrelevant.",
+      "code": "from sklearn.ensemble import RandomForestClassifier\nmodel = RandomForestClassifier()\nmodel.fit(X, y)\nimportances = model.feature_importances_\nimportant_features = X.columns[importances > 0.05]"
+    }
+  ]
+}

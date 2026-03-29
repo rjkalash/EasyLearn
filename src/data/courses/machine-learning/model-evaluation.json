@@ -1,0 +1,54 @@
+{
+  "id": "model-evaluation",
+  "title": "Model Evaluation",
+  "subtopics": [
+    {
+      "id": "accuracy",
+      "title": "Accuracy",
+      "definition": "Correct prediction ratio",
+      "explanation": "Measures overall correctness but fails on imbalance.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "precision",
+      "title": "Precision",
+      "definition": "True positive ratio",
+      "explanation": "Important when false positives matter.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "recall",
+      "title": "Recall",
+      "definition": "Detection rate",
+      "explanation": "Important when missing positives is costly.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "f1-score",
+      "title": "F1 Score",
+      "definition": "Harmonic mean",
+      "explanation": "Balances precision and recall.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "roc-curve",
+      "title": "ROC Curve",
+      "definition": "Performance curve",
+      "explanation": "Plots true positive vs false positive rate.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "auc-score",
+      "title": "AUC Score",
+      "definition": "Area under ROC",
+      "explanation": "Measures model separability.",
+      "links": [],
+      "videos": []
+    }
+  ]
+}

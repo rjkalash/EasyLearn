@@ -1,0 +1,22 @@
+{
+  "id": "time-series",
+  "title": "Time Series",
+  "subtopics": [
+    {
+      "id": "arima",
+      "title": "ARIMA",
+      "definition": "Time series model",
+      "explanation": "Captures trends and seasonality.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "seasonality",
+      "title": "Seasonality",
+      "definition": "Repeating patterns",
+      "explanation": "Periodic variations in data.",
+      "links": [],
+      "videos": []
+    }
+  ]
+}

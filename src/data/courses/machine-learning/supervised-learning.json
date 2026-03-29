@@ -1,0 +1,86 @@
+{
+  "id": "supervised-learning",
+  "title": "Supervised Learning",
+  "subtopics": [
+    {
+      "id": "linear-regression",
+      "title": "Linear Regression",
+      "definition": "Predicts continuous output",
+      "explanation": "Fits a line minimizing squared error between predicted and actual values.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "multiple-linear-regression",
+      "title": "Multiple Linear Regression",
+      "definition": "Regression with multiple variables",
+      "explanation": "Uses multiple independent variables to predict output.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "polynomial-regression",
+      "title": "Polynomial Regression",
+      "definition": "Non-linear regression",
+      "explanation": "Fits polynomial curve instead of straight line.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "logistic-regression",
+      "title": "Logistic Regression",
+      "definition": "Binary classification model",
+      "explanation": "Uses sigmoid function to predict probability.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "decision-trees",
+      "title": "Decision Trees",
+      "definition": "Tree-based model",
+      "explanation": "Splits dataset recursively based on feature values.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "random-forest",
+      "title": "Random Forest",
+      "definition": "Ensemble model",
+      "explanation": "Combines multiple decision trees to reduce overfitting.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "support-vector-machine",
+      "title": "Support Vector Machine",
+      "definition": "Max margin classifier",
+      "explanation": "Finds hyperplane with maximum margin between classes.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "k-nearest-neighbors",
+      "title": "K-Nearest Neighbors",
+      "definition": "Instance-based learning",
+      "explanation": "Classifies based on closest data points.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "naive-bayes",
+      "title": "Naive Bayes",
+      "definition": "Probabilistic classifier",
+      "explanation": "Based on Bayes theorem assuming feature independence.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "gradient-boosting",
+      "title": "Gradient Boosting",
+      "definition": "Sequential ensemble",
+      "explanation": "Builds models iteratively correcting previous errors.",
+      "links": [],
+      "videos": []
+    }
+  ]
+}

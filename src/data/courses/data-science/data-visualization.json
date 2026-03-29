@@ -1,0 +1,30 @@
+{
+  "id": "data-visualization",
+  "title": "Data Visualization",
+  "subtopics": [
+    {
+      "id": "bar-chart",
+      "title": "Bar Chart",
+      "definition": "Categorical comparison",
+      "explanation": "A bar chart displays categorical data with rectangular bars where bar length is proportional to the value. Ideal for comparing quantities across categories.",
+      "example": "Comparing sales across different product categories: electronics, clothing, groceries.",
+      "code": "df.groupby('category')['sales'].sum().plot(kind='bar')\nplt.title('Sales by Category')\nplt.ylabel('Total Sales')\nplt.show()"
+    },
+    {
+      "id": "line-chart",
+      "title": "Line Chart",
+      "definition": "Trend visualization",
+      "explanation": "A line chart displays information as a series of data points connected by straight lines. Perfect for showing trends over time or continuous data.",
+      "example": "Plotting monthly website traffic over a year to identify seasonal patterns and growth.",
+      "code": "plt.plot(df['date'], df['traffic'])\nplt.xlabel('Date')\nplt.ylabel('Website Traffic')\nplt.title('Traffic Trend Over Time')\nplt.show()"
+    },
+    {
+      "id": "scatter-plot",
+      "title": "Scatter Plot",
+      "definition": "Relationship plot",
+      "explanation": "A scatter plot uses Cartesian coordinates to display values for two variables. It reveals correlations, clusters, and outliers in the relationship between variables.",
+      "example": "Plotting advertising spend vs. sales revenue shows if increased spending leads to higher sales.",
+      "code": "plt.scatter(df['ad_spend'], df['revenue'])\nplt.xlabel('Ad Spend')\nplt.ylabel('Revenue')\nplt.title('Ad Spend vs Revenue')\nplt.show()"
+    }
+  ]
+}

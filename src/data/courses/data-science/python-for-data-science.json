@@ -1,0 +1,30 @@
+{
+  "id": "python-for-data-science",
+  "title": "Python for Data Science",
+  "subtopics": [
+    {
+      "id": "numpy",
+      "title": "NumPy",
+      "definition": "Numerical computing",
+      "explanation": "NumPy provides efficient array operations and mathematical functions for numerical computing. Its N-dimensional arrays are the foundation for most data science libraries in Python.",
+      "example": "Perform element-wise operations on large arrays much faster than Python lists.",
+      "code": "import numpy as np\narr = np.array([1, 2, 3, 4, 5])\nprint(arr * 2)  # Output: [2, 4, 6, 8, 10]\nprint(np.mean(arr))  # Output: 3.0"
+    },
+    {
+      "id": "pandas",
+      "title": "Pandas",
+      "definition": "Data manipulation",
+      "explanation": "Pandas provides DataFrame structures for data manipulation and analysis. It offers powerful tools for cleaning, transforming, aggregating, and visualizing structured data.",
+      "example": "Load a CSV file, filter rows, group by a column, and compute summary statistics.",
+      "code": "import pandas as pd\ndf = pd.read_csv('data.csv')\nfiltered = df[df['age'] > 30]\nsummary = filtered.groupby('city')['salary'].mean()"
+    },
+    {
+      "id": "matplotlib",
+      "title": "Matplotlib",
+      "definition": "Visualization library",
+      "explanation": "Matplotlib is the foundational plotting library in Python. It provides fine-grained control over every aspect of a figure, enabling publication-quality visualizations.",
+      "example": "Create a simple line plot with custom labels, title, and legend.",
+      "code": "import matplotlib.pyplot as plt\nx = [1, 2, 3, 4]\ny = [10, 20, 25, 30]\nplt.plot(x, y, marker='o', label='Sales')\nplt.xlabel('Quarter')\nplt.ylabel('Revenue')\nplt.title('Quarterly Revenue')\nplt.legend()\nplt.show()"
+    }
+  ]
+}

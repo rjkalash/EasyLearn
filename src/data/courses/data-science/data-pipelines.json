@@ -1,0 +1,22 @@
+{
+  "id": "data-pipelines",
+  "title": "Data Pipelines",
+  "subtopics": [
+    {
+      "id": "etl",
+      "title": "ETL",
+      "definition": "Extract Transform Load",
+      "explanation": "ETL is the core process of moving data from sources to a data warehouse. Extract pulls raw data, Transform cleans and structures it, and Load writes it to the target system for analysis.",
+      "example": "Extract from APIs/databases, transform by cleaning and aggregating, load into a cloud data warehouse like Snowflake or BigQuery.",
+      "code": "import pandas as pd\n# Extract\ndf = pd.read_csv('raw_data.csv')\n# Transform\ndf_clean = df.dropna().rename(columns={'old_name': 'new_name'})\n# Load\ndf_clean.to_sql('cleaned_table', con=engine, if_exists='replace')"
+    },
+    {
+      "id": "data-warehousing",
+      "title": "Data Warehousing",
+      "definition": "Central storage",
+      "explanation": "A data warehouse is a centralized repository optimized for analytical querying and reporting. It stores integrated, historical data from multiple sources, enabling business intelligence and analytics.",
+      "example": "A company's data warehouse combines sales, marketing, and customer support data into a single source of truth for executives.",
+      "code": "-- SQL query on a data warehouse\nSELECT \n    date_trunc('month', order_date) AS month,\n    SUM(revenue) AS total_revenue\nFROM fact_sales\nGROUP BY month\nORDER BY month;"
+    }
+  ]
+}

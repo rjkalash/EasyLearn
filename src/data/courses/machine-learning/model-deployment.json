@@ -1,0 +1,22 @@
+{
+  "id": "model-deployment",
+  "title": "Model Deployment",
+  "subtopics": [
+    {
+      "id": "rest-api-deployment",
+      "title": "REST API Deployment",
+      "definition": "Serve models via API",
+      "explanation": "Uses Flask/FastAPI.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "docker",
+      "title": "Docker",
+      "definition": "Containerization",
+      "explanation": "Packages models for deployment.",
+      "links": [],
+      "videos": []
+    }
+  ]
+}

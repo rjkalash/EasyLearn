@@ -1,0 +1,30 @@
+{
+  "id": "optimization",
+  "title": "Optimization",
+  "subtopics": [
+    {
+      "id": "gradient-descent",
+      "title": "Gradient Descent",
+      "definition": "Optimization algorithm",
+      "explanation": "Minimizes loss function iteratively.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "learning-rate",
+      "title": "Learning Rate",
+      "definition": "Step size",
+      "explanation": "Controls convergence speed.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "loss-functions",
+      "title": "Loss Functions",
+      "definition": "Error measure",
+      "explanation": "Quantifies prediction error.",
+      "links": [],
+      "videos": []
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "big-data",
+  "title": "Big Data",
+  "subtopics": [
+    {
+      "id": "hadoop",
+      "title": "Hadoop",
+      "definition": "Distributed system",
+      "explanation": "Hadoop is an open-source framework for distributed storage (HDFS) and processing (MapReduce) of massive datasets across clusters of computers. It enables scaling from single servers to thousands of machines.",
+      "example": "Processing terabytes of log files across a 100-node cluster to identify user behavior patterns.",
+      "code": "# MapReduce example (pseudocode)\n# Map: Extract word from log\n# Reduce: Count occurrences\nmap(key, line): emit(word, 1)\nreduce(word, counts): emit(word, sum(counts))"
+    },
+    {
+      "id": "spark",
+      "title": "Spark",
+      "definition": "Fast processing engine",
+      "explanation": "Apache Spark is a unified analytics engine for large-scale data processing. It performs in-memory computing, making it much faster than Hadoop MapReduce for iterative algorithms and interactive queries.",
+      "example": "Process streaming data in real-time or run complex machine learning algorithms on terabyte-scale datasets.",
+      "code": "from pyspark.sql import SparkSession\nspark = SparkSession.builder.appName(\"example\").getOrCreate()\ndf = spark.read.csv(\"huge_dataset.csv\")\nresult = df.groupBy(\"category\").count()"
+    }
+  ]
+}

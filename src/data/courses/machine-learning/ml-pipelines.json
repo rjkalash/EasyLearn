@@ -1,0 +1,22 @@
+{
+  "id": "ml-pipelines",
+  "title": "ML Pipelines",
+  "subtopics": [
+    {
+      "id": "data-pipeline",
+      "title": "Data Pipeline",
+      "definition": "Data flow system",
+      "explanation": "Processes data for ML models.",
+      "links": [],
+      "videos": []
+    },
+    {
+      "id": "model-pipeline",
+      "title": "Model Pipeline",
+      "definition": "Training workflow",
+      "explanation": "Includes preprocessing + model.",
+      "links": [],
+      "videos": []
+    }
+  ]
+}
