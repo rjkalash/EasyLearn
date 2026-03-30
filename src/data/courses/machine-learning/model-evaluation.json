@@ -5,50 +5,50 @@
     {
       "id": "accuracy",
       "title": "Accuracy",
-      "definition": "Correct prediction ratio",
-      "explanation": "Measures overall correctness but fails on imbalance.",
-      "links": [],
-      "videos": []
+      "definition": "Proportion of correct predictions",
+      "explanation": "Accuracy = (TP + TN) / (TP + TN + FP + FN). It measures overall correctness but can be misleading for imbalanced datasets. Example: 95% accuracy on a dataset with 95% negative class is trivial (model predicting all negative achieves 95%). Use when classes are balanced and costs of errors are equal. For imbalanced data, consider balanced accuracy or other metrics.",
+      "example": "Cancer detection: 1000 patients, 10 have cancer. Model predicts all negative → 990/1000 = 99% accuracy, but detects 0 cancer cases (useless).",
+      "code": "import numpy as np\nfrom sklearn.metrics import accuracy_score, balanced_accuracy_score\n\ndef calculate_accuracy(y_true, y_pred):\n    \"\"\"Manual accuracy calculation\"\"\"\n    correct = np.sum(y_true == y_pred)\n    total = len(y_true)\n    return correct / total\n\n# Example: Imbalanced dataset\ny_true = np.array([0] * 990 + [1] * 10)\ny_pred = np.array([0] * 1000)  # Predict all negative\n\nacc = accuracy_score(y_true, y_pred)\nbalanced_acc = balanced_accuracy_score(y_true, y_pred)\n\nprint(\"🔷 Accuracy\")\nprint(\"=\" * 60)\nprint(f\"\\n📊 Imbalanced Dataset Example:\")\nprint(f\"  True labels: 990 negatives, 10 positives\")\nprint(f\"  Predictions: all negative\")\nprint(f\"  Accuracy: {acc:.4f}\")\nprint(f\"  Balanced Accuracy: {balanced_acc:.4f}\")\nprint(f\"\\n⚠️  Accuracy fails on imbalanced data!\")\nprint(f\"\\n✅ When to use Accuracy:\")\nprint(\"  • Balanced classes\")\nprint(\"  • Equal cost of false positives and false negatives\")"
     },
     {
       "id": "precision",
       "title": "Precision",
-      "definition": "True positive ratio",
-      "explanation": "Important when false positives matter.",
-      "links": [],
-      "videos": []
+      "definition": "Proportion of positive predictions that are correct",
+      "explanation": "Precision = TP / (TP + FP). Measures how many of the predicted positive cases are actually positive. High precision means low false positives. Important when false positives are costly (e.g., spam detection: marking good email as spam is bad). Also called positive predictive value (PPV).",
+      "example": "Spam detection: 100 emails marked spam, 95 are actually spam → Precision = 0.95. Only 5 false positives (good emails marked spam).",
+      "code": "from sklearn.metrics import precision_score\n\ndef calculate_precision(y_true, y_pred):\n    \"\"\"Manual precision calculation\"\"\"\n    tp = np.sum((y_true == 1) & (y_pred == 1))\n    fp = np.sum((y_true == 0) & (y_pred == 1))\n    return tp / (tp + fp) if (tp + fp) > 0 else 0\n\ny_true = np.array([0, 0, 1, 1, 1])\ny_pred = np.array([0, 1, 1, 1, 1])  # One false positive\n\nprecision = precision_score(y_true, y_pred)\nprint(\"\\n🔷 Precision\")\nprint(\"=\" * 60)\nprint(f\"\\n📊 Example:\")\nprint(f\"  True: {y_true}\")\nprint(f\"  Pred: {y_pred}\")\nprint(f\"  TP=3, FP=1 → Precision = {precision:.4f}\")\nprint(f\"\\n✅ When to use Precision:\")\nprint(\"  • False positives are costly (spam detection, fraud alerts)\")\nprint(\"  • Need to be confident in positive predictions\")"
     },
     {
       "id": "recall",
-      "title": "Recall",
-      "definition": "Detection rate",
-      "explanation": "Important when missing positives is costly.",
-      "links": [],
-      "videos": []
+      "title": "Recall (Sensitivity)",
+      "definition": "Proportion of actual positives correctly identified",
+      "explanation": "Recall = TP / (TP + FN). Measures how many of the actual positive cases were detected. High recall means low false negatives. Important when missing positives is costly (e.g., cancer detection: missing a cancer case is dangerous). Also called sensitivity, hit rate, or true positive rate (TPR).",
+      "example": "Cancer screening: 10 actual cancer cases, model detects 9 → Recall = 0.9. Only 1 missed cancer case (false negative).",
+      "code": "from sklearn.metrics import recall_score\n\ndef calculate_recall(y_true, y_pred):\n    \"\"\"Manual recall calculation\"\"\"\n    tp = np.sum((y_true == 1) & (y_pred == 1))\n    fn = np.sum((y_true == 1) & (y_pred == 0))\n    return tp / (tp + fn) if (tp + fn) > 0 else 0\n\ny_true = np.array([1, 1, 1, 0, 0])\ny_pred = np.array([1, 0, 1, 0, 0])  # One false negative\n\nrecall = recall_score(y_true, y_pred)\nprint(\"\\n🔷 Recall\")\nprint(\"=\" * 60)\nprint(f\"\\n📊 Example:\")\nprint(f\"  True: {y_true}\")\nprint(f\"  Pred: {y_pred}\")\nprint(f\"  TP=2, FN=1 → Recall = {recall:.4f}\")\nprint(f\"\\n✅ When to use Recall:\")\nprint(\"  • False negatives are costly (cancer detection, fraud detection)\")\nprint(\"  • Need to catch as many positives as possible\")"
     },
     {
       "id": "f1-score",
       "title": "F1 Score",
-      "definition": "Harmonic mean",
-      "explanation": "Balances precision and recall.",
-      "links": [],
-      "videos": []
+      "definition": "Harmonic mean of precision and recall",
+      "explanation": "F1 = 2 * (Precision * Recall) / (Precision + Recall). Balances precision and recall, giving equal weight to both. F1 is 1 when both precision and recall are 1, and 0 when either is 0. Useful when you need a single metric that balances false positives and false negatives. For multi-class, use macro (average per class) or weighted (weighted by support) F1.",
+      "example": "Precision=0.8, Recall=0.8 → F1=0.8. Precision=0.9, Recall=0.7 → F1≈0.79 (penalizes imbalance).",
+      "code": "from sklearn.metrics import f1_score\n\ndef calculate_f1(precision, recall):\n    \"\"\"Manual F1 calculation\"\"\"\n    return 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0\n\nprecision = 0.8\nrecall = 0.8\nf1 = calculate_f1(precision, recall)\n\nprint(\"\\n🔷 F1 Score\")\nprint(\"=\" * 60)\nprint(f\"\\n📊 F1 = 2 * (P * R) / (P + R)\")\nprint(f\"  Precision=0.8, Recall=0.8 → F1 = {f1:.4f}\")\nprint(f\"\\n📊 Multi-class F1:\")\nfrom sklearn.metrics import f1_score\n\ny_true = [0, 1, 2, 0, 1, 2]\ny_pred = [0, 2, 1, 0, 0, 1]\n\nmacro_f1 = f1_score(y_true, y_pred, average='macro')\nweighted_f1 = f1_score(y_true, y_pred, average='weighted')\nprint(f\"  Macro F1: {macro_f1:.4f} (average per class)\")\nprint(f\"  Weighted F1: {weighted_f1:.4f} (weighted by class size)\")\nprint(f\"\\n✅ When to use F1 Score:\")\nprint(\"  • Imbalanced datasets\")\nprint(\"  • Need single metric balancing precision and recall\")"
     },
     {
       "id": "roc-curve",
       "title": "ROC Curve",
-      "definition": "Performance curve",
-      "explanation": "Plots true positive vs false positive rate.",
-      "links": [],
-      "videos": []
+      "definition": "Receiver Operating Characteristic curve",
+      "explanation": "ROC curve plots True Positive Rate (Recall) vs False Positive Rate (FPR) at various classification thresholds. FPR = FP / (FP + TN). Each point represents a threshold. Perfect classifier: curve goes to (0,1) top-left. Random classifier: diagonal line. ROC curve helps choose optimal threshold and compare model performance regardless of class distribution. Area under curve (AUC) summarizes performance.",
+      "example": "Model A ROC curve always above Model B → Model A better. Threshold at 0.5 gives specific TPR/FPR point; moving threshold trades off sensitivity vs specificity.",
+      "code": "from sklearn.metrics import roc_curve, roc_auc_score\nimport matplotlib.pyplot as plt\n\ny_true = np.array([0, 0, 1, 1, 1, 0, 1, 0, 1, 1])\ny_scores = np.array([0.1, 0.2, 0.6, 0.8, 0.9, 0.3, 0.7, 0.4, 0.85, 0.95])\n\nfpr, tpr, thresholds = roc_curve(y_true, y_scores)\n\nprint(\"\\n🔷 ROC Curve\")\nprint(\"=\" * 60)\nprint(f\"\\n📊 ROC Points:\")\nfor i in range(len(thresholds)):\n    print(f\"  Threshold={thresholds[i]:.2f}: FPR={fpr[i]:.4f}, TPR={tpr[i]:.4f}\")\n\nprint(f\"\\n✅ Interpretation:\")\nprint(\"  • Top-left corner (0,1): Perfect classifier\")\nprint(\"  • Diagonal line: Random classifier\")\nprint(\"  • Curve above diagonal: Better than random\")"
     },
     {
       "id": "auc-score",
       "title": "AUC Score",
-      "definition": "Area under ROC",
-      "explanation": "Measures model separability.",
-      "links": [],
-      "videos": []
+      "definition": "Area Under the ROC Curve",
+      "explanation": "AUC measures the entire two-dimensional area under the ROC curve. AUC = 1.0: perfect classifier, AUC = 0.5: random classifier. AUC represents the probability that a randomly chosen positive example is ranked higher than a randomly chosen negative example. AUC is scale-invariant and threshold-invariant. Higher AUC indicates better model separability.",
+      "example": "AUC = 0.85 means 85% chance model will rank a random positive higher than a random negative.",
+      "code": "from sklearn.metrics import roc_auc_score\n\n# Calculate AUC\nroc_auc = roc_auc_score(y_true, y_scores)\n\nprint(\"\\n🔷 AUC Score\")\nprint(\"=\" * 60)\nprint(f\"\\n📊 AUC = {roc_auc:.4f}\")\nprint(f\"\\nInterpretation:\")\nprint(f\"  • AUC = 1.0: Perfect classifier\")\nprint(f\"  • AUC = 0.85: {roc_auc*100:.0f}% chance positive > negative\")\nprint(f\"  • AUC = 0.5: Random classifier\")\n\n# Complete evaluation summary\nprint(\"\\n🔷 Complete Model Evaluation Summary\")\nprint(\"=\" * 60)\n\n# Generate sample data\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.datasets import make_classification\n\nX, y = make_classification(n_samples=1000, n_features=20, n_informative=15,\n                           n_redundant=5, weights=[0.9, 0.1], random_state=42)\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\n# Train model\nmodel = RandomForestClassifier(n_estimators=100, random_state=42)\nmodel.fit(X_train, y_train)\ny_pred = model.predict(X_test)\ny_proba = model.predict_proba(X_test)[:, 1]\n\nfrom sklearn.metrics import classification_report, confusion_matrix\n\n# Confusion Matrix\ncm = confusion_matrix(y_test, y_pred)\ntn, fp, fn, tp = cm.ravel()\n\nprint(f\"\\n📊 Confusion Matrix:\")\nprint(f\"  TN={tn}, FP={fp}\")\nprint(f\"  FN={fn}, TP={tp}\")\n\n# Calculate all metrics\naccuracy = accuracy_score(y_test, y_pred)\nprecision = precision_score(y_test, y_pred)\nrecall = recall_score(y_test, y_pred)\nf1 = f1_score(y_test, y_pred)\nauc = roc_auc_score(y_test, y_proba)\n\nprint(f\"\\n📊 Model Performance:\")\nprint(f\"  Accuracy:  {accuracy:.4f}\")\nprint(f\"  Precision: {precision:.4f}\")\nprint(f\"  Recall:    {recall:.4f}\")\nprint(f\"  F1 Score:  {f1:.4f}\")\nprint(f\"  AUC:       {auc:.4f}\")\n\nprint(f\"\\n📊 Classification Report:\")\nprint(classification_report(y_test, y_pred, target_names=['Negative', 'Positive']))\n\nprint(\"\\n✅ Metric Selection Guide:\")\nprint(\"-\" * 40)\nprint(\"  Scenario                    | Best Metric\")\nprint(\"  ----------------------------|------------------\")\nprint(\"  Balanced classes            | Accuracy\")\nprint(\"  Imbalanced classes          | F1 Score, AUC\")\nprint(\"  False positives costly      | Precision\")\nprint(\"  False negatives costly      | Recall\")\nprint(\"  Need single metric          | F1 Score\")\nprint(\"  Model comparison            | AUC\")\nprint(\"  Threshold selection         | ROC Curve\")\nprint(\"  Business decision           | Precision-Recall\")\n\nprint(\"\\n💡 Key Takeaways:\")\nprint(\"  • Accuracy can be misleading for imbalanced data\")\nprint(\"  • Precision and Recall trade off (increase one, decrease other)\")\nprint(\"  • F1 Score balances both\")\nprint(\"  • AUC is threshold-independent\")\nprint(\"  • ROC curve helps choose optimal threshold\")\nprint(\"  • Always use multiple metrics for evaluation\")"
     }
   ]
 }

@@ -5,82 +5,82 @@
     {
       "id": "linear-regression",
       "title": "Linear Regression",
-      "definition": "Predicts continuous output",
-      "explanation": "Fits a line minimizing squared error between predicted and actual values.",
-      "links": [],
-      "videos": []
+      "definition": "Predicts continuous output by fitting a linear relationship",
+      "explanation": "Linear Regression models the relationship between input features and a continuous target variable using a linear equation: y = β₀ + β₁x₁ + ... + βₙxₙ + ε. Parameters (β) are learned by minimizing Mean Squared Error (MSE). Assumptions: linearity, independence, homoscedasticity, normality. Simple to implement and interpret, but cannot capture non-linear patterns.",
+      "example": "Predict house price: price = 50000 + 200·sqft + 10000·bedrooms. For 2000 sqft, 3 bedrooms → price = 50000 + 400000 + 30000 = $480,000.",
+      "code": "import numpy as np\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import mean_squared_error, r2_score\n\n# Generate synthetic data\nnp.random.seed(42)\nX = np.random.rand(100, 1) * 10\ny = 2.5 * X.squeeze() + np.random.randn(100) * 2\n\n# Train model\nmodel = LinearRegression()\nmodel.fit(X, y)\n\nprint(\"🔷 Linear Regression\")\nprint(\"=\" * 60)\nprint(f\"\\n📊 Model: y = {model.coef_[0]:.4f}x + {model.intercept_:.4f}\")\nprint(f\"  R² Score: {r2_score(y, model.predict(X)):.4f}\")\nprint(f\"  MSE: {mean_squared_error(y, model.predict(X)):.4f}\")"
     },
     {
       "id": "multiple-linear-regression",
       "title": "Multiple Linear Regression",
-      "definition": "Regression with multiple variables",
-      "explanation": "Uses multiple independent variables to predict output.",
-      "links": [],
-      "videos": []
+      "definition": "Linear regression with multiple independent variables",
+      "explanation": "Extends simple linear regression to multiple features: y = β₀ + β₁x₁ + β₂x₂ + ... + βₙxₙ. Captures combined effects of all features. Coefficients represent the change in target per unit change in feature (holding others constant). Must check for multicollinearity (correlated features). Feature scaling helps interpretation.",
+      "example": "Predict salary: salary = 30000 + 5000·years_experience + 2000·education_level + 1000·age.",
+      "code": "# Multiple features\nX_multi = np.random.rand(100, 3) * 10\ny_multi = 2*X_multi[:,0] + 3*X_multi[:,1] - 1.5*X_multi[:,2] + np.random.randn(100) * 2\n\nmodel_multi = LinearRegression()\nmodel_multi.fit(X_multi, y_multi)\n\nprint(\"\\n🔷 Multiple Linear Regression\")\nprint(\"=\" * 60)\nprint(f\"\\n📊 Coefficients: {model_multi.coef_}\")\nprint(f\"  Intercept: {model_multi.intercept_:.4f}\")\nprint(f\"  R² Score: {r2_score(y_multi, model_multi.predict(X_multi)):.4f}\")"
     },
     {
       "id": "polynomial-regression",
       "title": "Polynomial Regression",
-      "definition": "Non-linear regression",
-      "explanation": "Fits polynomial curve instead of straight line.",
-      "links": [],
-      "videos": []
+      "definition": "Non-linear regression using polynomial features",
+      "explanation": "Extends linear regression by adding polynomial terms: y = β₀ + β₁x + β₂x² + ... + βₙxⁿ. Captures non-linear relationships while still using linear regression on transformed features. Higher degrees increase flexibility but risk overfitting. Use cross-validation to select optimal degree.",
+      "example": "Predict acceleration of a car: acceleration = β₀ + β₁·speed + β₂·speed² (captures diminishing acceleration at high speeds).",
+      "code": "from sklearn.preprocessing import PolynomialFeatures\nfrom sklearn.pipeline import Pipeline\n\n# Create non-linear data\nX_poly = np.random.rand(100, 1) * 3\ny_poly = 0.5 * X_poly.squeeze()**2 - 1.5 * X_poly.squeeze() + np.random.randn(100) * 0.5\n\n# Polynomial regression pipeline\npoly_model = Pipeline([\n    ('poly', PolynomialFeatures(degree=2)),\n    ('linear', LinearRegression())\n])\npoly_model.fit(X_poly, y_poly)\n\nprint(\"\\n🔷 Polynomial Regression\")\nprint(\"=\" * 60)\nprint(f\"\\n📊 R² Score: {r2_score(y_poly, poly_model.predict(X_poly)):.4f}\")\nprint(\"  Polynomial features added (x, x²)\")"
     },
     {
       "id": "logistic-regression",
       "title": "Logistic Regression",
-      "definition": "Binary classification model",
-      "explanation": "Uses sigmoid function to predict probability.",
-      "links": [],
-      "videos": []
+      "definition": "Binary classification using sigmoid function",
+      "explanation": "Despite name, Logistic Regression is for binary classification. Models probability using sigmoid: P(y=1|x) = 1/(1 + e^{-(β₀ + β₁x₁ + ...)}). Output in (0,1). Decision boundary at P=0.5. Trained by maximizing likelihood (minimizing log loss). Handles both binary and multi-class (One-vs-Rest).",
+      "example": "Spam detection: P(spam|email) = sigmoid( -2 + 0.5·contains_offer + 0.8·contains_urgent ). Score >0.5 → spam.",
+      "code": "from sklearn.linear_model import LogisticRegression\nfrom sklearn.datasets import make_classification\n\nX_clf, y_clf = make_classification(n_samples=200, n_features=4, random_state=42)\nlog_reg = LogisticRegression()\nlog_reg.fit(X_clf, y_clf)\n\nprint(\"\\n🔷 Logistic Regression\")\nprint(\"=\" * 60)\nprint(f\"\\n📊 Accuracy: {log_reg.score(X_clf, y_clf):.4f}\")\nprint(f\"  Coefficients: {log_reg.coef_[0]}\")"
     },
     {
       "id": "decision-trees",
       "title": "Decision Trees",
-      "definition": "Tree-based model",
-      "explanation": "Splits dataset recursively based on feature values.",
-      "links": [],
-      "videos": []
+      "definition": "Tree-based model for classification and regression",
+      "explanation": "Decision Trees recursively split data based on feature values, creating a tree structure. Classification: splits maximize information gain (entropy reduction). Regression: splits minimize variance. Interpretable, handles non-linear relationships, no scaling needed. Prone to overfitting without depth limits or pruning.",
+      "example": "Loan approval: Is income >50k? → Yes: Is credit score >700? → Yes → Approve.",
+      "code": "from sklearn.tree import DecisionTreeClassifier\nfrom sklearn.datasets import load_iris\n\niris = load_iris()\ndt = DecisionTreeClassifier(max_depth=3, random_state=42)\ndt.fit(iris.data, iris.target)\n\nprint(\"\\n🔷 Decision Trees\")\nprint(\"=\" * 60)\nprint(f\"\\n📊 Accuracy: {dt.score(iris.data, iris.target):.4f}\")\nprint(f\"  Tree depth: {dt.get_depth()}\")"
     },
     {
       "id": "random-forest",
       "title": "Random Forest",
-      "definition": "Ensemble model",
-      "explanation": "Combines multiple decision trees to reduce overfitting.",
-      "links": [],
-      "videos": []
+      "definition": "Ensemble of decision trees using bagging",
+      "explanation": "Random Forest builds multiple decision trees on bootstrap samples with random feature subsets. Reduces overfitting and variance. Aggregates predictions via majority vote (classification) or average (regression). Provides feature importance. Handles high-dimensional data well.",
+      "example": "100 trees each trained on different data samples and feature subsets → vote on final prediction → more stable than single tree.",
+      "code": "from sklearn.ensemble import RandomForestClassifier\n\nrf = RandomForestClassifier(n_estimators=100, max_depth=5, random_state=42)\nrf.fit(iris.data, iris.target)\n\nprint(\"\\n🔷 Random Forest\")\nprint(\"=\" * 60)\nprint(f\"\\n📊 Accuracy: {rf.score(iris.data, iris.target):.4f}\")\nprint(f\"  Feature importance: {rf.feature_importances_}\")"
     },
     {
       "id": "support-vector-machine",
-      "title": "Support Vector Machine",
-      "definition": "Max margin classifier",
-      "explanation": "Finds hyperplane with maximum margin between classes.",
-      "links": [],
-      "videos": []
+      "title": "Support Vector Machine (SVM)",
+      "definition": "Maximum margin classifier",
+      "explanation": "SVM finds hyperplane that maximizes margin between classes. Support vectors are closest points to hyperplane. Kernel trick maps data to higher dimensions for non-linear separation. Common kernels: linear, polynomial, RBF. Effective for high-dimensional spaces, memory efficient.",
+      "example": "RBF kernel SVM can create circular decision boundaries, separating concentric circles.",
+      "code": "from sklearn.svm import SVC\n\nsvm = SVC(kernel='rbf', gamma='scale', random_state=42)\nsvm.fit(iris.data, iris.target)\n\nprint(\"\\n🔷 Support Vector Machine\")\nprint(\"=\" * 60)\nprint(f\"\\n📊 Accuracy: {svm.score(iris.data, iris.target):.4f}\")\nprint(f\"  Support vectors: {len(svm.support_)}\")"
     },
     {
       "id": "k-nearest-neighbors",
-      "title": "K-Nearest Neighbors",
-      "definition": "Instance-based learning",
-      "explanation": "Classifies based on closest data points.",
-      "links": [],
-      "videos": []
+      "title": "K-Nearest Neighbors (KNN)",
+      "definition": "Instance-based learning using closest samples",
+      "explanation": "KNN classifies new points by majority vote of k nearest neighbors in feature space. Lazy learner (no training). Requires feature scaling. Sensitive to k value and distance metric (Euclidean, Manhattan). Simple, intuitive, but slow for large datasets.",
+      "example": "k=3: new point's 3 nearest neighbors are 2 cats, 1 dog → classify as cat.",
+      "code": "from sklearn.neighbors import KNeighborsClassifier\nfrom sklearn.preprocessing import StandardScaler\n\nknn = KNeighborsClassifier(n_neighbors=3)\nknn.fit(iris.data, iris.target)\n\nprint(\"\\n🔷 K-Nearest Neighbors\")\nprint(\"=\" * 60)\nprint(f\"\\n📊 Accuracy: {knn.score(iris.data, iris.target):.4f}\")"
     },
     {
       "id": "naive-bayes",
       "title": "Naive Bayes",
-      "definition": "Probabilistic classifier",
-      "explanation": "Based on Bayes theorem assuming feature independence.",
-      "links": [],
-      "videos": []
+      "definition": "Probabilistic classifier assuming feature independence",
+      "explanation": "Based on Bayes' Theorem with 'naive' independence assumption. P(y|x) ∝ P(y)·Π P(xᵢ|y). Types: Gaussian (continuous), Multinomial (counts), Bernoulli (binary). Fast, works well with high dimensions, needs less data. Effective for text classification.",
+      "example": "Spam filtering: P(spam|words) ∝ P(spam)·P(word₁|spam)·P(word₂|spam)...",
+      "code": "from sklearn.naive_bayes import GaussianNB\n\nnb = GaussianNB()\nnb.fit(iris.data, iris.target)\n\nprint(\"\\n🔷 Naive Bayes\")\nprint(\"=\" * 60)\nprint(f\"\\n📊 Accuracy: {nb.score(iris.data, iris.target):.4f}\")"
     },
     {
       "id": "gradient-boosting",
       "title": "Gradient Boosting",
-      "definition": "Sequential ensemble",
-      "explanation": "Builds models iteratively correcting previous errors.",
-      "links": [],
-      "videos": []
+      "definition": "Sequential ensemble correcting previous errors",
+      "explanation": "Gradient Boosting builds trees sequentially, each correcting residuals of previous ensemble. Optimizes any differentiable loss function. High accuracy but slower to train. Parameters: learning rate (shrinkage), n_estimators, max_depth. XGBoost, LightGBM, CatBoost are optimized variants.",
+      "example": "First tree predicts baseline. Second tree predicts errors of first. Third predicts errors of ensemble. Combined for final prediction.",
+      "code": "from sklearn.ensemble import GradientBoostingClassifier\n\ngb = GradientBoostingClassifier(n_estimators=100, learning_rate=0.1, max_depth=3, random_state=42)\ngb.fit(iris.data, iris.target)\n\nprint(\"\\n🔷 Gradient Boosting\")\nprint(\"=\" * 60)\nprint(f\"\\n📊 Accuracy: {gb.score(iris.data, iris.target):.4f}\")\nprint(f\"  Number of trees: {gb.n_estimators_}\")\nprint(f\"  Feature importance: {gb.feature_importances_}\")"
     }
   ]
 }

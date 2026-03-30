@@ -83,6 +83,13 @@ export const metadata: Metadata = {
     canonical: 'https://easylearn.dev',
   },
   category: 'education',
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    apple: '/icon.svg',
+    shortcut: '/icon.svg',
+  },
 };
 
 

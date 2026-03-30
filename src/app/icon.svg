@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#047857;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="shine" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.12" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background rounded square -->
+  <rect width="64" height="64" rx="14" ry="14" fill="url(#bg)" />
+  <!-- Subtle shine overlay -->
+  <rect width="64" height="32" rx="14" ry="14" fill="url(#shine)" />
+
+  <!-- Open book shape -->
+  <!-- Left page -->
+  <path d="M10 20 Q10 17 13 17 L30 19 L30 46 L13 44 Q10 44 10 41 Z"
+        fill="#ffffff" opacity="0.95"/>
+  <!-- Right page -->
+  <path d="M54 20 Q54 17 51 17 L34 19 L34 46 L51 44 Q54 44 54 41 Z"
+        fill="#ffffff" opacity="0.85"/>
+  <!-- Spine crease -->
+  <line x1="32" y1="18" x2="32" y2="46" stroke="#d1fae5" stroke-width="2"/>
+
+  <!-- Lines on left page representing text -->
+  <line x1="14" y1="24" x2="27" y2="24.5" stroke="#059669" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+  <line x1="14" y1="28" x2="27" y2="28.5" stroke="#059669" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+  <line x1="14" y1="32" x2="24" y2="32.4" stroke="#059669" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- Lines on right page -->
+  <line x1="37" y1="24" x2="50" y2="24.5" stroke="#059669" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+  <line x1="37" y1="28" x2="50" y2="28.5" stroke="#059669" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+  <line x1="37" y1="32" x2="46" y2="32.4" stroke="#059669" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- Small graduation cap at top -->
+  <polygon points="32,9 40,13 32,17 24,13" fill="#ffffff" opacity="0.9"/>
+  <rect x="38" y="13" width="1.5" height="4" fill="#ffffff" opacity="0.9"/>
+  <circle cx="38.75" cy="17.5" r="1.5" fill="#d1fae5"/>
+</svg>
